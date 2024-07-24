@@ -1,0 +1,624 @@
+openapi: 3.0.0
+info:
+  title: eCONFEA API
+  description: API dos sitemas eCONFEA.
+  version: 1.0.0
+servers:
+  - url: https://api.confea.org.br/v1
+paths:
+  /art:
+    post:
+      tags:
+        - ART
+      summary: Enviar ART
+      description: Envia uma ART para outro CREA.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ART'
+      responses:
+        '200':
+          description: ART enviada com sucesso
+        '400':
+          description: Erro na solicitação
+  /art/{id}:
+    get:
+      tags:
+        - ART
+      summary: Obter ART
+      description: Obtém os detalhes de uma ART específica.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da ART
+      responses:
+        '200':
+          description: Detalhes da ART
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ART'
+        '400':
+          description: Erro na solicitação
+          
+    delete:
+      tags:
+        - ART
+      summary: Excluir ART
+      description: Obtém os detalhes de uma ART específica.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da ART
+      responses:
+        '200':
+          description: Excluir da ART
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ART'
+        '400':
+          description: Erro na solicitação
+  /visto:
+    post:
+      tags:
+          - Visto
+      summary: Solicitar Visto
+      description: Solicita um visto para outro CREA.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visto'
+      responses:
+        '200':
+          description: Visto solicitado com sucesso
+        '400':
+          description: Erro na solicitação
+    
+  /visto/{id}:
+    get:
+      tags:
+          - Visto
+      summary: Obter Visto
+      description: Obtém os detalhes de uma Visto específica.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID do visto
+      responses:
+        '200':
+          description: Detalhes da ART
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ART'
+        '400':
+          description: Erro na solicitação
+    put:
+      tags:
+          - Visto
+      summary: Editar Visto
+      description: Editar visto para outro CREA.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID do visto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Visto'
+      responses:
+        '200':
+          description: Visto atualizado com sucesso
+        '400':
+          description: Erro na solicitação
+    delete:
+      tags:
+          - Visto
+      summary: Exclusão de Visto
+      description: Excluir visto de outro CREA.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da ART
+      responses:
+        '200':
+          description: Visto solicitado com sucesso
+        '400':
+          description: Erro na solicitação
+
+  /profissional:
+    post:
+      tags:
+        - Profissional
+      summary: Criar profissional
+      description: Cria um novo profissional.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profissional'
+      responses:
+        '201':
+          description: Profissional criado com sucesso
+        '400':
+          description: Erro na solicitação
+          
+  /profissional/{rnp}:
+    get:
+      tags:
+        - Profissional
+      summary: Buscar RNP
+      description: Retorna uma lista de profissionais.
+      parameters:
+        - name: rnp
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da ART
+      responses:
+        '200':
+          description: Lista de profissionais
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Profissional'
+        '400':
+          description: Erro na solicitação
+    put:
+      tags:
+        - Profissional
+      summary: Atualizar profissional
+      description: >-
+        Atualiza um profissional existente. É necessário enviar o objeto
+        completo.
+      parameters:
+        - name: rnp
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da ART
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profissional'
+      responses:
+        '200':
+          description: Profissional atualizado com sucesso
+        '400':
+          description: Erro na solicitação
+    delete:
+      tags:
+        - Profissional
+      summary: Excluir profissional
+      description: >-
+        Excluir um profissional
+      parameters:
+        - name: rnp
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da ART
+      responses:
+        '200':
+          description: Profissional excluído com sucesso
+        '400':
+          description: Erro na solicitação
+
+
+  /webhooks:
+    post:
+      tags:
+          - Webhook
+      summary: Cadastro de Webhook
+      description: Cadastra um novo webhook para notificações de eventos.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Webhook'
+      responses:
+        '201':
+          description: Webhook cadastrado com sucesso
+        '400':
+          description: Erro na solicitação
+  /webhooks/{id}:
+    get:
+      tags:
+        - Webhook
+      summary: Buscar webhook
+      description: >-
+        Atualiza um profissional existente. É necessário enviar o objeto
+        completo.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID do webhook
+      responses:
+        '200':
+          description: Profissional webhook com sucesso
+        '400':
+          description: Erro na solicitação
+    put:
+      tags:
+        - Webhook
+      summary: Atualizar webhook
+      description: >-
+        Atualiza um profissional existente. É necessário enviar o objeto
+        completo.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID do webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profissional'
+      responses:
+        '200':
+          description: Profissional webhook com sucesso
+        '400':
+          description: Erro na solicitação
+    delete:
+      tags:
+        - Webhook
+      summary: Excluir webhook
+      description: >-
+        Excluir um profissional
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID do webhook
+      responses:
+        '200':
+          description: Profissional excluído com sucesso
+        '400':
+          description: Erro na solicitação
+
+tags:
+  - name: ART
+    description: Anotação de Responsabilidade Técnica(ART
+    
+  - name: Visto
+    description: Operações relacionadas a visto
+  
+  - name: Profissional
+    description: Operações relacionadas ao proficional
+    
+  - name: Webhook
+    description: Operações relacionadas ao webhook
+    
+components:
+  schemas:
+    ART:
+      type: object
+      properties:
+        # Identificador único da ART
+        id:
+          type: integer
+        # Número da ART
+        numero:
+          type: string
+        # Data de registro da ART
+        dataRegistro:
+          type: string
+          format: date
+        # Tipo da ART (obra, serviço, cargo ou função)
+        tipo:
+          type: string
+          enum: ["obra", "servico", "cargo", "funcao"]
+        # Situação da ART (ativa, baixada, cancelada)
+        situacao:
+          type: string
+          enum: ["ativa", "baixada", "cancelada"]
+        # Profissional responsável pela ART
+        responsavelTecnico:
+          $ref: '#/components/schemas/Profissional'
+        # Contratante da ART
+        contratante:
+          type: object
+          properties:
+            # Nome do contratante
+            nome:
+              type: string
+            # CNPJ do contratante
+            cnpj:
+              type: string
+        # Obra ou serviço relacionado à ART
+        obraOuServico:
+          type: object
+          properties:
+            # Descrição da obra ou serviço
+            descricao:
+              type: string
+            # Local da obra ou serviço
+            local:
+              type: string
+    Visto:
+      type: object
+      properties:
+        id:
+          type: string
+        descricao:
+          type: string
+        status:
+          type: string
+          enum: 
+            - 'EM_ANALISE'
+            - 'ACEITO'
+            - 'RECUSADO'
+        dataSolicitacao:
+          type: string
+          format: date-time
+    Profissional:
+      type: object
+      properties:
+        creCadCod:
+          type: string
+          maxLength: 99
+          description: Código do CREA.
+          enum:
+            - '01'
+            - '02'
+            - '03'
+            - '04'
+            - '05'
+            - '06'
+            - '07'
+            - '08'
+            - '09'
+            - '10'
+            - '11'
+            - '12'
+            - '13'
+            - '14'
+            - '15'
+            - '16'
+            - '17'
+            - '18'
+            - '19'
+            - '20'
+            - '21'
+            - '22'
+            - '23'
+            - '24'
+            - '25'
+            - '26'
+            - '27'
+        dscNac:
+          type: string
+          maxLength: 12
+          description: Nacionalidade do profissional.
+        dscNat:
+          type: string
+          maxLength: 24
+          description: Naturalidade do profissional.
+        dtaExpIdt:
+          type: string
+          format: date-time
+          description: Data de expedição da Carteira de Identidade ou RG.
+        dtaNsc:
+          type: string
+          format: date-time
+          description: Data de nascimento.
+        estCiv:
+          type: string
+          maxLength: 1
+          description: Estado civil.
+          enum:
+            - C
+            - D
+            - 'N'
+            - O
+            - J
+            - S
+            - V
+        indRec:
+          type: string
+          maxLength: 1
+          description: Indicação de Recadastramento.
+          enum:
+            - S
+            - 'N'
+        nme:
+          type: string
+          maxLength: 60
+          description: Nome do profissional.
+        nroIdt:
+          type: string
+          maxLength: 15
+          description: Carteira de Identidade ou RG.
+        orgExpIdt:
+          type: string
+          maxLength: 15
+          description: Órgão expedidor da Carteira de Identidade ou RG.
+        pisNac:
+          type: string
+          maxLength: 20
+          description: Número de PIS.
+        sex:
+          type: string
+          maxLength: 1
+          description: Sexo.
+          enum:
+            - F
+            - M
+        tpoIdt:
+          type: string
+          maxLength: 3
+          description: Tipo de identidade.
+          enum:
+            - CI
+            - CNH
+            - CRM
+            - CRN
+            - CREA
+            - CRO
+            - OUT
+            - PASS
+        tpoReg:
+          type: string
+          maxLength: 2
+          description: Tipo de registro.
+          enum:
+            - PE
+            - PP
+            - TE
+            - TR
+        eml:
+          type: string
+          maxLength: 50
+          description: E-mail do profissional.
+        nroCel:
+          type: string
+          maxLength: 15
+          description: Número de celular.
+        nroTel:
+          type: string
+          maxLength: 15
+          description: Número de telefone.
+        enderecos:
+          type: array
+          items:
+            type: object
+        imagens:
+          type: object
+        anuidades:
+          type: array
+          items:
+            type: object
+        flgNmeSocial:
+          type: boolean
+          description: Indica se o profissional possui nome social.
+        nomeSocial:
+          type: string
+          maxLength: 60
+          description: Nome social do profissional.
+        cpfAst:
+          type: string
+          maxLength: 11
+          description: CPF do assistente profissional para registros temporários.
+        dscMunTitEle:
+          type: string
+          maxLength: 30
+          description: Município do Título de Eleitor.
+        dtaAtiva:
+          type: string
+          format: date-time
+          description: Data de ativação do profissional.
+        dtaFal:
+          type: string
+          format: date-time
+          description: Data de falecimento do profissional.
+        dtaFimReg:
+          type: string
+          format: date-time
+          description: Data final do registro.
+        dtaFimVclAst:
+          type: string
+          format: date-time
+          description: Data final de vínculo com o assistente.
+        dtaGerRnp:
+          type: string
+          format: date-time
+          description: Data de alteração.
+        dtaIniReg:
+          type: string
+          format: date-time
+          description: Data inicial do registro.
+        dtaIniVclAst:
+          type: string
+          format: date-time
+          description: Data de início de vínculo com o assistente.
+        dtaRecad:
+          type: string
+          format: date-time
+          description: Data de recadastramento do profissional.
+        dtaRegCre:
+          type: string
+          format: date-time
+          description: Data de Registro no CREA.
+        dtaTemp:
+          type: string
+          format: date-time
+          description: Data de início de vínculo com o assistente.
+        dtaValRnp:
+          type: string
+          format: date-time
+          description: Data de validade do RNP.
+        flgDoador:
+          type: boolean
+          description: Indicação de Recadastramento.
+        hpg:
+          type: string
+          maxLength: 50
+          description: Website do profissional.
+        competencias_e_habilidades_nacional:
+          type: array
+          items:
+            $ref: '#/components/schemas/CompetenciaEHabilidadeNacional'
+    CompetenciaEHabilidadeNacional:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        tipo:
+          type: integer
+        extra:
+          type: array
+          items:
+            type: string
+    Webhook:
+      type: object
+      properties:
+        url:
+          type: string
+        eventos:
+          type: array
+          items:
+            type: string
+            enum:
+              - artCriada
