@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O sistema **eConfea** foi desenvolvido com o objetivo de aumentar a eficiência e centralizar as informações do sistema CONFEA/CREA. Enfrentamos desafios significativos na gestão de registros profissionais e na emissão de vistos para atuação em outros Estados como responsáveis técnicos. Nossa proposta é unificar todos os registros profissionais e facilitar a emissão de Anotações de Responsabilidade Técnica (ART) e vistos, utilizando inteligência artificial para otimizar e garantir maior precisão nesses processos.
+O sistema **eConfea** foi desenvolvido com o objetivo de aumentar a eficiência e centralizar as informações do sistema CONFEA/CREA. Enfrentamos desafios significativos na gestão de registros profissionais e na emissão de vistos para atuação em outros Estados como responsáveis técnicos. Nossa proposta é unificar todos os registros profissionais e facilitar a emissão de Anotações de Responsabilidade Técnica (ART) e vistos.
 
 ## Funcionalidades
 
@@ -28,4 +28,4 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ## Contato
 
-Para mais informações, entre em contato com [gabrielsouza2@discente.ufg.br](mailto:gabrielsouza2@discente.ufg.br).
+Para mais informações, entre em contato com [seu email](mailto:seuemail@dominio.com).
