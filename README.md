@@ -18,9 +18,45 @@ O sistema **eConfea** foi desenvolvido com o objetivo de aumentar a eficiência 
 - **Redução da Burocracia:** Diminuição dos trâmites administrativos e facilitação da comunicação.
 - **Fiscalização com Inteligência Artificial:** Aproveitamento da centralização dos dados para implementar ferramentas de inteligência artificial que promovem uma fiscalização mais eficiente e assertiva.
 
-## Contribuição
+# Configuração e Instalação do Laravel
 
-Contribuições para o desenvolvimento do sistema eConfea são bem-vindas. Se você tiver sugestões, melhorias ou desejar colaborar, por favor, abra uma issue ou envie um pull request.
+Este guia fornece instruções para configurar e instalar um projeto Laravel localmente.
+
+## Requisitos
+
+Antes de começar, certifique-se de que você tem os seguintes requisitos instalados:
+
+- [PHP](https://www.php.net/) (>= 8.2)
+- [Composer](https://getcomposer.org/) (Gerenciador de dependências PHP)
+- [MySQL](https://www.mysql.com/) ou outro banco de dados compatível
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+
+## Passos para Instalação
+
+1. **Clone o Repositório**
+
+   Primeiro, clone o repositório do projeto:
+
+   ```bash
+   git clone https://github.com/xxggabriel/hackathon-crea
+    ```
+
+## Para rodar este projeto
+```bash
+$ git clone https://github.com/xxggabriel/hackathon-crea
+$ cd hackathon-crea
+$ composer install
+$ cp .env.example .env
+$ php artisan key:generate
+$ php artisan migrate #antes de rodar este comando verifique sua configuracao com banco em .env
+$ php artisan serve
+
+```
+Acesssar pela url: http://localhost:8000
+
 
 ## Licença
 
@@ -28,4 +64,4 @@ Este projeto está licenciado sob a [Licença MIT](LICENSE).
 
 ## Contato
 
-Para mais informações, entre em contato com [seu email](mailto:seuemail@dominio.com).
+Para mais informações, entre em contato com [gabrielsouza2@discente.ufg.br](mailto:gabrielsouza2@discente.ufg.br).
